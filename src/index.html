@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/dist/output.css" rel="stylesheet" />
+    <script src="./assets/fontawesome/js/fontawesome.min.js"></script>
+    <script src="./assets/fontawesome/js/solid.min.js"></script>
+    <script>
+      window.onload = () => {
+        const mobileMenuIcon = document.getElementById("mobile-menu-button");
+        mobileMenuIcon.addEventListener("click", () => {
+          if (mobileMenuIcon.classList.contains("open")) {
+            mobileMenuIcon.classList.remove("open");
+          } else {
+            mobileMenuIcon.classList.add("open");
+          }
+        });
+
+        const ticketMenuItem = document.getElementById("ticket-menu-item");
+        ticketMenuItem.addEventListener("click", () => {
+          if (ticketMenuItem.classList.contains("open")) {
+            ticketMenuItem.classList.remove("open");
+          } else {
+            ticketMenuItem.classList.add("open");
+          }
+        });
+
+        const darkModeToggle = document.getElementById("dark-mode-toggle");
+        darkModeToggle.addEventListener("click", () => {
+          if (document.body.classList.contains("dark")) {
+            document.body.classList.remove("dark");
+          } else {
+            document.body.classList.add("dark");
+          }
+        });
+
+        const previousButton = document.getElementById("previous");
+        const nextButton = document.getElementById("next");
+        const carousel = document.getElementById("carousel");
+
+        previousButton.addEventListener("click", () => {
+          itemWidth = carousel.getElementsByTagName("div")[0].clientWidth;
+          carousel.scrollLeft = carousel.scrollLeft - itemWidth;
+        });
+
+        nextButton.addEventListener("click", () => {
+          itemWidth = carousel.getElementsByTagName("div")[0].clientWidth;
+          carousel.scrollLeft = carousel.scrollLeft + itemWidth;
+        });
+      };
+    </script>
+  </head>
+  <body class="dark">
+    <main class="bg-zinc-200 dark:bg-zinc-900">
+      <header class="text-zinc-100">
+        <button
+          id="dark-mode-toggle"
+          class="z-10 fixed top-24 w-12 right-0 p-2 rounded-l-lg text-3xl text-zinc-200 dark:text-zinc-900 bg-zinc-900 dark:bg-zinc-200 cursor-pointer"
+        >
+          <span class="dark:hidden"><i class="fa-solid fa-sun"></i></span>
+          <span class="hidden dark:inline"
+            ><i class="fa-solid fa-moon"></i
+          ></span>
+        </button>
+        <nav
+          class="sticky z-10 top-0 flex bg-gradient-to-r from-rose-500 to-pink-500"
+        >
+          <div class="flex items-center p-2 gap-2">
+            <img src="./assets/images/logo-inverted.png" width="50" />
+            <div class="text-2xl font-bold">
+              tw:<span class="text-sky-900">mf</span>
+            </div>
+          </div>
+          <!-- mobile view menu -->
+          <div class="block md:hidden ml-auto pr-4 my-auto cursor-pointer">
+            <button id="mobile-menu-button" class="group peer">
+              <div
+                class="relative top-0 bg-zinc-200 rounded-full w-8 h-1 group-open:rotate-45 transition-all group-open:top-2"
+              ></div>
+              <div
+                class="bg-zinc-200 rounded-full w-8 h-1 mt-1 opacity-100 group-open:opacity-0"
+              ></div>
+              <div
+                class="relative top-0 bg-zinc-200 rounded-full w-8 h-1 mt-1 group-open:-rotate-45 transition-all group-open:-top-2"
+              ></div>
+            </button>
+            <div
+              class="absolute top-[62px] hidden bg-gradient-to-r from-rose-500 to-pink-500 w-full left-0 peer-open:block"
+            >
+              <div
+                class="relative flex items-center justify-center h-full p-4 cursor-pointer font-bold text-pink-200 hover:text-zinc-200 transition-colors ease-in-out hover:bg-white/10"
+              >
+                <span>Home</span>
+              </div>
+              <div
+                class="relative flex items-center justify-center h-full p-4 cursor-pointer font-bold text-pink-200 hover:text-zinc-200 transition-colors ease-in-out hover:bg-white/10"
+              >
+                <span>Lineup</span>
+              </div>
+              <div
+                id="ticket-menu-item"
+                class="group relative h-full cursor-pointer font-bold text-pink-200 hover:text-zinc-200 transition-colors ease-in-out hover:bg-white/10"
+              >
+                <div class="p-4 font-bold text-center">Tickets</div>
+                <div class="hidden group-open:block">
+                  <div
+                    class="relative text-center text-pink-200 hover:text-zinc-200 hover:bg-white/5 transition-colors ease-in-out h-full p-4"
+                  >
+                    <span>single day Ticket</span>
+                  </div>
+                  <div
+                    class="relative text-center text-pink-200 hover:text-zinc-200 hover:bg-white/5 transition-colors ease-in-out h-full p-4"
+                  >
+                    <span>7 day Ticket</span>
+                  </div>
+                </div>
+              </div>
+              <div
+                class="relative flex items-center justify-center h-full p-4 cursor-pointer font-bold text-pink-200 hover:text-zinc-200 transition-colors ease-in-out hover:bg-white/10"
+              >
+                <span>Support</span>
+              </div>
+            </div>
+          </div>
+          <!-- web view menu -->
+          <div class="md:flex hidden flex-1 items-center justify-end">
+            <div class="item-menu">
+              <span>Home</span>
+            </div>
+            <div class="item-menu">
+              <span>Lineup</span>
+            </div>
+            <div class="item-menu group">
+              <span>Tickets</span>
+              <div
+                class="hidden group-hover:block absolute top-full right-0 whitespace-nowrap cursor-pointer rounded-b-md bg-pink-500 text-right"
+              >
+                <div
+                  class="h-full p-4 cursor-pointer items-center font-bold text-pink-200 hover:text-zinc-200 hover:bg-white/10 transition-colors ease-in-out"
+                >
+                  <span>single day Ticket</span>
+                </div>
+                <div
+                  class="h-full p-4 cursor-pointer items-center font-bold text-pink-200 hover:text-zinc-200 hover:bg-white/10 transition-colors ease-in-out"
+                >
+                  <span>7 day Ticket</span>
+                </div>
+              </div>
+            </div>
+            <div class="item-menu">
+              <span>Support</span>
+            </div>
+          </div>
+        </nav>
+        <div
+          style="background-image: url(./assets/images/hero.jpg)"
+          class="bg-cover bg-center bg-fixed flex flex-col items-center justify-center h-[calc(100vh-200px)] min-h-[400px]"
+        >
+          <div
+            class="bg-white/30 rounded-xl backdrop-blur-md py-2 px-4 text-center"
+          >
+            <div class="relative">
+              <img src="./assets/images/logo.png" width="175" />
+              <div class="flex items-center justify-center mt-[-70px] mb-5">
+                <div
+                  class="bg-pink-500 w-14 h-14 rounded-full flex items-center justify-center gap-1"
+                >
+                  <div
+                    class="h-1 w-1 bg-pink-300 rounded-full animate-wavey"
+                  ></div>
+                  <div
+                    class="h-3 w-1 bg-pink-200 rounded-full animate-wavey animation-delay-100"
+                  ></div>
+                  <div
+                    class="h-4 w-1 bg-pink-100 rounded-full animate-wavey animation-delay-150ms"
+                  ></div>
+                  <div
+                    class="h-3 w-1 bg-pink-200 rounded-full animate-wavey animation-delay-300"
+                  ></div>
+                  <div
+                    class="h-1 w-1 bg-pink-300 rounded-full animate-wavey animation-delay-75ms"
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <div class="text-5xl font-bold">
+              tw: <span class="text-sky-900">mf</span>
+            </div>
+          </div>
+          <div class="mt-3 text-sm font-bold">
+            Keep me updated with news and promotions
+          </div>
+          <form class="mt-3 flex gap-2">
+            <input
+              type="email"
+              placeholder="Email"
+              class="rounded-sm border border-white/40 bg-white/30 backdrop-blur-md p-2 text-sky-900 placeholder-zinc-500 caret-pink-500 outline-1 outline-pink-500 focus:outline-2 font-bold"
+            />
+            <button
+              class="rounded-sm py-2 px-4 cursor-pointer bg-pink-500 font-bold transition-colors hover:bg-sky-900 hover:shadow-lg hover:shadow-black/20"
+            >
+              Subscribe
+            </button>
+          </form>
+        </div>
+      </header>
+      <div
+        class="max-w-screen-lg mt-20 px-4 mx-auto text-zinc-900 dark:text-zinc-200"
+      >
+        <h2>
+          <span
+            class="text-transparent bg-gradient-to-r from-cyan-500 to-pink-500 bg-clip-text"
+            >Headliners</span
+          >
+        </h2>
+        <p>
+          Experience the sonic delight from these made-up artists across 7 days
+          that music fans are calling “one of the many gigs that will happen
+          this year”
+        </p>
+        <div class="flex">
+          <div
+            id="previous"
+            class="text-5xl flex justify-center items-center cursor-pointer p-2 relative -top-8"
+          >
+            <i class="fas fa-angle-left"></i>
+          </div>
+          <div
+            id="carousel"
+            class="scroll-smooth w-full flex gap-4 pb-5 mt-4 snap-x overflow-x-hidden"
+          >
+            <div class="min-w-[80%] md:min-w-[40%]">
+              <div
+                style="background-image: url(./assets/images/band1.jpg)"
+                class="h-80 w-full snap-center rounded-xl bg-cover bg-center shadow-md shadow-black/20"
+              ></div>
+              <h5 class="mt-2">Gary loo</h5>
+              <h6>1st July 9pm - Main Stage</h6>
+            </div>
+            <div class="min-w-[80%] md:min-w-[40%]">
+              <div
+                style="background-image: url(./assets/images/band2.jpg)"
+                class="h-80 w-full snap-center rounded-xl bg-cover bg-center shadow-md shadow-black/20"
+              ></div>
+              <h5 class="mt-2">Gary loo</h5>
+              <h6>1st July 9pm - Main Stage</h6>
+            </div>
+            <div class="min-w-[80%] md:min-w-[40%]">
+              <div
+                style="background-image: url(./assets/images/band3.jpg)"
+                class="h-80 w-full snap-center rounded-xl bg-cover bg-center shadow-md shadow-black/20"
+              ></div>
+              <h5 class="mt-2">Gary loo</h5>
+              <h6>1st July 9pm - Main Stage</h6>
+            </div>
+            <div class="min-w-[80%] md:min-w-[40%]">
+              <div
+                style="background-image: url(./assets/images/band4.jpg)"
+                class="h-80 w-full snap-center rounded-xl bg-cover bg-center shadow-md shadow-black/20"
+              ></div>
+              <h5 class="mt-2">Gary loo</h5>
+              <h6>1st July 9pm - Main Stage</h6>
+            </div>
+            <div class="min-w-[80%] md:min-w-[40%]">
+              <div
+                style="background-image: url(./assets/images/band5.jpg)"
+                class="h-80 w-full snap-center rounded-xl bg-cover bg-center shadow-md shadow-black/20"
+              ></div>
+              <h5 class="mt-2">Gary loo</h5>
+              <h6>1st July 9pm - Main Stage</h6>
+            </div>
+            <div class="min-w-[80%] md:min-w-[40%]">
+              <div
+                style="background-image: url(./assets/images/band6.jpg)"
+                class="h-80 w-full snap-center rounded-xl bg-cover bg-center shadow-md shadow-black/20"
+              ></div>
+              <h5 class="mt-2">Gary loo</h5>
+              <h6>1st July 9pm - Main Stage</h6>
+            </div>
+            <div class="min-w-[80%] md:min-w-[40%]">
+              <div
+                style="background-image: url(./assets/images/band7.jpg)"
+                class="h-80 w-full snap-center rounded-xl bg-cover bg-center shadow-md shadow-black/20"
+              ></div>
+              <h5 class="mt-2">Gary loo</h5>
+              <h6>1st July 9pm - Main Stage</h6>
+            </div>
+          </div>
+          <div
+            id="next"
+            class="text-5xl flex justify-center items-center cursor-pointer p-2 relative -top-8"
+          >
+            <i class="fas fa-angle-right"></i>
+          </div>
+        </div>
+        <h2 class="mt-20">Lineup</h2>
+        <p>
+          Follow the timetable and stage to ensure you don't miss your favourite
+          artists
+        </p>
+        <div
+          class="mt-5 relative rounded-lg bg-zinc-800 text-zinc-200 py-4 px-2"
+        >
+          <div
+            class="absolute rounded-full h-full w-4 -ml-2 top-0 left-1/2 bg-gradient-to-b from-sky-900 via-cyan-900 to-teal-900"
+          >
+            <div class="sticky top-1/2">
+              <div class="relative size-4">
+                <div
+                  class="absolute size-4 rounded-full bg-rose-500 animate-ping"
+                ></div>
+                <div class="bg-rose-500 size-4 rounded-full relative"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-8">
+            <div class="bg-zinc-900 mt-4 p-2 rounded-lg">1st July</div>
+            <div></div>
+            <div class="text-right">
+              <div class="font-bold">Arijit Singh</div>
+              <div class="text-zinc-400">5pm,Sago stage</div>
+            </div>
+            <div></div>
+            <div></div>
+            <div class="text-left -mt-8">
+              <div class="font-bold">Badshah Music</div>
+              <div class="text-zinc-400">6pm,Archid Hotel</div>
+            </div>
+            <div></div>
+            <div></div>
+            <div class="text-right -mt-12">
+              <div class="font-bold">Anuv Jain</div>
+              <div class="text-zinc-400">4pm,Millenium Mall</div>
+            </div>
+            <div></div>
+            <div></div>
+            <div class="text-left -mt-8">
+              <div class="font-bold">Sunidhi Concert</div>
+              <div class="text-zinc-400">5pm,Almighty stage</div>
+            </div>
+            <div class="bg-zinc-900 mt-4 p-2 rounded-lg">2nd July</div>
+            <div></div>
+            <div class="text-right">
+              <div class="font-bold">Shreya Ghoshal</div>
+              <div class="text-zinc-400">5pm,Sago stage</div>
+            </div>
+            <div></div>
+            <div></div>
+            <div class="text-left -mt-8">
+              <div class="font-bold">Honey singh Concert</div>
+              <div class="text-zinc-400">6pm,Archid Hotel</div>
+            </div>
+            <div></div>
+            <div></div>
+            <div class="text-right -mt-12">
+              <div class="font-bold">Diljit's Dilluminati</div>
+              <div class="text-zinc-400">4pm,Millenium Mall</div>
+            </div>
+            <div></div>
+            <div></div>
+            <div class="text-left -mt-8">
+              <div class="font-bold">Sunidhi Concert</div>
+              <div class="text-zinc-400">5pm,Almighty stage</div>
+            </div>
+          </div>
+        </div>
+        <div class="pb-20">
+          <h2 class="mt-20">Tickets</h2>
+          <table
+            class="mt-5 table w-full border border-zinc-500 border-collapse"
+          >
+            <thead class="font-bold text-lg">
+              <td class="border border-zinc-500 border-collapse p-3">
+                Tickets
+              </td>
+              <td class="border border-zinc-500 border-collapse p-3">Price</td>
+              <td class="md:w-[150px]"></td>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="border border-zinc-500 border-collapse py-2 px-3">
+                  Single day Ticket
+                </td>
+                <td class="border border-zinc-500 border-collapse py-2 px-3">
+                  Rs.500
+                </td>
+                <td class="border border-zinc-500 border-collapse py-2 px-3">
+                  <button
+                    class="p-2 bg-pink-500 text-zinc-200 rounded-lg cursor-pointer"
+                  >
+                    Buy Now
+                  </button>
+                </td>
+              </tr>
+              <tr>
+                <td class="border border-zinc-500 border-collapse py-2 px-3">
+                  7 day Tickets
+                </td>
+                <td class="border border-zinc-500 border-collapse py-2 px-3">
+                  Rs.4000
+                </td>
+                <td class="border border-zinc-500 border-collapse py-2 px-3">
+                  <button
+                    class="p-2 bg-pink-500 text-zinc-200 rounded-lg cursor-pointer"
+                  >
+                    Buy Now
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+            <caption class="caption-bottom">
+              Once they're gone, they're gone
+            </caption>
+          </table>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
